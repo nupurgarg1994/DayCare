@@ -14,13 +14,13 @@ namespace DayCare.Models
         {
             Immunization im = new Immunization();
              Lmi = im.L_IM;
-          smi = im.std;
+            smi = im.std;
             Student_records();
         }
         //write the studentdata
         public void Student_records()
         {
-            foreach(var item in smi)
+            foreach(Student item in smi)
             {
                 ImmunizationModel mn = checking(item.age);
                 try
@@ -35,7 +35,7 @@ namespace DayCare.Models
                             // Create a file to write to.
                             using (StreamWriter sw = File.CreateText(path))
                             {
-                                sw.Write(Student.id + ",");
+                                sw.Write(item.id + ",");
                                 sw.Write(item.firstName + ",");
                                 sw.Write(item.lastName + ",");
                                 sw.Write(item.age + ",");
@@ -50,7 +50,7 @@ namespace DayCare.Models
                         {
                             using (StreamWriter sw = File.AppendText(path))
                             {
-                                sw.Write(Student.id + ",");
+                                sw.Write(item.id + ",");
                                 sw.Write(item.firstName + ",");
                                 sw.Write(item.lastName + ",");
                                 sw.Write(item.age + ",");

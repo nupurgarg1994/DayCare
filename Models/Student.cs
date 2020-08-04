@@ -8,7 +8,7 @@ namespace DayCare.Models
     public class Student : Person
     {
         private static int x = 200101;
-        private int id { get; set; }
+        public int id { get; set; }
 
         private string parent;
         public Person teacher { get; set; }
