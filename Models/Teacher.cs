@@ -29,7 +29,7 @@ namespace DayCare.Models
         {
             Student student = (Student)stu;
             Teacher teacher = (Teacher)t;
-            int studentAgeInMonths = ((DateTime.Now.Year - student.dob.Year) * 12) + DateTime.Now.Month - student.dob.Month;
+            int studentAgeInMonths = ((DateTime.Now.Year - student.date_of_birth.Year) * 12) + DateTime.Now.Month - student.date_of_birth.Month;
             Room r = Room.getRoom(studentAgeInMonths, t);
             teacher.room = r;
             return r;
@@ -45,7 +45,7 @@ namespace DayCare.Models
         public static Person assignTeacher(Student student)
         {
             DayCare daycare = DayCare.getInstance();
-            int studentAgeInMonths = ((DateTime.Now.Year - student.dob.Year) * 12) + DateTime.Now.Month - student.dob.Month;
+            int studentAgeInMonths = ((DateTime.Now.Year - student.date_of_birth.Year) * 12) + DateTime.Now.Month - student.date_of_birth.Month;
 
             HashSet<Person> groupTeachers = null;
             String group = GroupByAge.findGroup(studentAgeInMonths);

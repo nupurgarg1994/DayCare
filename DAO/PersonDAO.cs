@@ -10,10 +10,10 @@ namespace DayCare.DAO
 {
     public class PersonDAO
     {
-       static  Student s;
-        static Teacher t;
+       
+       
          
-       static string path = @"./student.csv";
+       static string path = @".\student.csv";
         public static void save(Person p)
         {
           
@@ -37,7 +37,7 @@ namespace DayCare.DAO
         private static void saveStudent(Person p)
 
         {
-            s = (Student)p;
+            Student s = (Student)p;
 
             if (!File.Exists(path))
             {
@@ -45,7 +45,7 @@ namespace DayCare.DAO
                 using (StreamWriter sw = File.CreateText(path))
                 {
 
-                    sw.Write(Student.id+ ",");
+                    sw.Write(s.id+ ",");
                     sw.Write(p.firstName + ",");
                     sw.Write(p.lastName + ",");
                     sw.Write(p.age + ",");
@@ -61,7 +61,7 @@ namespace DayCare.DAO
             {
                 using (StreamWriter sw = File.AppendText(path))
                 {
-                    sw.Write(Student.id + ",");
+                    sw.Write(s.id + ",");
                     sw.Write(p.firstName + ",");
                     sw.Write(p.lastName + ",");
                     sw.Write(p.age + ",");

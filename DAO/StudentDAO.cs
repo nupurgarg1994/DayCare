@@ -11,7 +11,7 @@ namespace DayCare.DAO
         }
         public static List<string> s_readData { get; set; }
 
-        static string path = @"./student.csv";
+        static string path = @".\student.csv";
 
         public static List<string> readFile()
         {

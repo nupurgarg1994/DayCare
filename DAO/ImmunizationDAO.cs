@@ -12,7 +12,7 @@ namespace DayCare.DAO
            
         }
 
-        static string path = @"./Immunization.csv";
+        static string path = @".\Immunization.csv";
        
         public static List<string> readFile()
         {
