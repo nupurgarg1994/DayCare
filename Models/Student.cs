@@ -7,13 +7,29 @@ namespace DayCare.Models
 {
     public class Student : Person
     {
-        public static  int x = 200101;
-        public static int id { get { return x; } set { id = x++; } }
-        public string parent;
-        public DateTime date_of_joining { get; set; } = DateTime.Today;
-        
+        private static int x = 200101;
+        private int id { get; set; }
 
-        public Student() { 
+        private string parent;
+        public Person teacher { get; set; }
+        public Room room { get; set; }
+        public DateTime date_of_joining { get; set; } 
+
+        public Student() {
+            id = x++;
+            date_of_joining = DateTime.Today;
+            teacher = assignTeacher();
+            room = assignRoom(teacher);           
+        }
+
+        public Person assignTeacher()
+        {
+            return Teacher.assignTeacher(this);           
+        }
+
+        public Room assignRoom(Person teacher)
+        {
+            return Teacher.assignRoom(this, teacher);
         }
 
 
