@@ -8,13 +8,14 @@ namespace DayCare.Models
     class Teacher : Person
     {
         private static int x = 500101;
-        private int id { get; set; }
+        public int id { get; set; }
         public HashSet<Person> students { get; set; }
         public Room room { get; set; }
 
         public Teacher()
         {
             id = x++;
+            students = new HashSet<Person>();
         }
         
         public Teacher(int id, int age, string fname, string lname)
@@ -23,6 +24,7 @@ namespace DayCare.Models
             this.age = age;
             this.firstName = fname;
             this.lastName = lname;
+            students = new HashSet<Person>();
         }
 
         public static Room assignRoom(Person stu, Person t)
@@ -71,6 +73,7 @@ namespace DayCare.Models
                 }
                
             }
+            
 
             HashSet<Person> availableTeachers = null;
             // if the teacher was not assigned
