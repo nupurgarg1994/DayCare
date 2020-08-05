@@ -39,12 +39,12 @@ namespace DayCare.Models
                         receiver_email = str[4];
                         age = Convert.ToInt16(str[3]);
                         date_of_birth = Convert.ToDateTime(str[5]);
-                        
+                        reminder(date_of_birth);
                     }
                 }
             }
 
-            reminder(date_of_birth);
+           
         }
 
         public void reminder(DateTime dob)
@@ -58,9 +58,11 @@ namespace DayCare.Models
                 age++;
                 using (MailMessage mm = new MailMessage("gargnupur740@gmail.com", receiver_email))
                 {
+
                     // ImmunizationRecordModels imrm = new ImmunizationRecordModels();
                     // ImmunizationModel im = imrm.checking(age);
                     // vaccine = im.vaccination;
+
                     mm.Subject = "Immunization Remainder";
                     mm.Body = string.Format("It's time to give vaccine to your child  as your chilid is going to be {0}",age,"Please give the following vaccines.{0}", vaccine);
 
