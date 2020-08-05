@@ -13,8 +13,6 @@ namespace DayCare.Models
         List<string> imuneDetails = ImmunizationDAO.readFile();
         List<string> stu_Details = StudentDAO.readFile();
         ImmunizationModel im ;
-        string[] I_details = new string[2];
-        string[] s_details = new string[7];
         public List<ImmunizationModel> L_IM = new List<ImmunizationModel>();
         public HashSet<Person> std = DayCare.getInstance().students;
           public  Immunization()
@@ -26,7 +24,7 @@ namespace DayCare.Models
         {
             foreach(var imd in imuneDetails)
             {
-                I_details = imd.Split(",");
+                string[] I_details = imd.Split(",");
                 im = new ImmunizationModel();
                 im.age = Convert.ToInt32(I_details[0]);
                 im.vaccination = I_details[1];
@@ -35,7 +33,7 @@ namespace DayCare.Models
             }
             foreach(var stu in stu_Details)
             {
-                s_details = stu.Split(",");
+                string[] s_details = stu.Split(",");
                 Student st = (Student)Factory.Get("STUDENT");
                 st.age = Convert.ToInt32(s_details[3]);
                 st.date_of_birth = Convert.ToDateTime(s_details[6]);

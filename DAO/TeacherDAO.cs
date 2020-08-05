@@ -29,7 +29,8 @@ namespace DayCare.DAO
             }
 
             GroupByAge res;
-            DayCare.Models.DayCare.getInstance().groups.TryGetValue("availableResources", out res);
+            DayCare.Models.DayCare daycare = DayCare.Models.DayCare.getInstance();
+            daycare.groups.TryGetValue("availableResources", out res);
 
             for (int i = 1; i < teacher_readData.Count; i++) // Loop through List with for
             {

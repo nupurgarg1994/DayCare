@@ -39,7 +39,7 @@ namespace DayCare.Models
                 return r;
             }
             catch (NullReferenceException e) {
-                Console.WriteLine();
+                Console.WriteLine(e);
             }
             return null;
         }
