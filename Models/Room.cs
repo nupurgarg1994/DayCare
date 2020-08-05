@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DayCare.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,6 +50,9 @@ namespace DayCare.Models
             }
 
             Room newRoom = new Room();
+            GroupByAge value;
+            daycare.groups.TryGetValue(group, out value);
+            newRoom.maxGroups = value.maxGroupsInRoom;
             newRoom.teachers.Add(t);
             RoomsInCurrGroup.Add(newRoom);
             
@@ -57,17 +61,20 @@ namespace DayCare.Models
 
         public static Dictionary<string, HashSet<Room>> initializeRooms()
         {
-            if (rooms == null)
-            {
-                rooms = new Dictionary<string, HashSet<Room>>();
-                rooms.Add("6-12", new HashSet<Room>());
-                rooms.Add("13-24", new HashSet<Room>());
-                rooms.Add("25-35", new HashSet<Room>());
-                rooms.Add("36-47", new HashSet<Room>());
-                rooms.Add("48-59", new HashSet<Room>());
-                rooms.Add("60-2147483647", new HashSet<Room>());
+            //if (DayCare.getInstance().rooms != null)
+            //{
+            //    return DayCare.getInstance().rooms;
+            //}
 
+            List<string> rules_data = RulesDAO.readFile();
+            Dictionary<string, HashSet<Room>> temp = new Dictionary<string, HashSet<Room>>();
+
+            for (int i = 1; i < rules_data.Count; i++) 
+            {
+                string[] line = rules_data[i].Split(",");
+                temp.Add(line[0], new HashSet<Room>());
             }
+            rooms = temp;
             return rooms;
         }
 
