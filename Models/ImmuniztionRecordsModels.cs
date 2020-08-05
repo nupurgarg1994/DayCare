@@ -9,11 +9,11 @@ namespace DayCare.Models
         static string path = @"./studentImmune.csv";
 
         List<ImmunizationModel> Lmi;
-        List<Student> smi;
+        HashSet<Person> smi;
         public ImmunizationRecordModels()
         {
             Immunization im = new Immunization();
-             Lmi = im.L_IM;
+            Lmi = im.L_IM;
             smi = im.std;
             Student_records();
         }
@@ -68,7 +68,7 @@ namespace DayCare.Models
                 }
                 catch (NullReferenceException e)
                 {
-                    
+                    Console.WriteLine(e);
                 }
              }
             ImmunizationReminder imr = new ImmunizationReminder();

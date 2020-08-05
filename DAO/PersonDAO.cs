@@ -10,13 +10,11 @@ namespace DayCare.DAO
 {
     public class PersonDAO
     {
-       
-       
-         
-       static string path = @".\student.csv";
+        
+        static string path = @".\student.csv";
         public static void save(Person p)
         {
-          
+            
             Type t = p.GetType();
             if (t.Equals(typeof(Student))){
                 PersonDAO.saveStudent(p);
