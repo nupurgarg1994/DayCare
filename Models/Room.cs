@@ -19,7 +19,7 @@ namespace DayCare.Models
         public Room()
         {
 
-            id = "Room_" + x++;
+            id = "" + x++ + "A";
             teachers = new HashSet<Person>();            
         }
 

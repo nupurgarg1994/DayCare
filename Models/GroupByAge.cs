@@ -10,6 +10,7 @@ namespace DayCare.Models
         private string groupId;
 
         private static Dictionary<string, GroupByAge> groups;
+
         public HashSet<Person> teachers { get; set; }
         public int groupSize { get; set; }
         //private int maxRooms { get; set; }

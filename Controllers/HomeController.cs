@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DayCare.Models;
+using DayCare.DAO;
 
 namespace DayCare.Controllers
 {
@@ -20,6 +21,7 @@ namespace DayCare.Controllers
 
         public IActionResult Index()
         {
+            TeacherDAO.readFile();
             return View();
         }
 
@@ -35,7 +37,7 @@ namespace DayCare.Controllers
         [HttpPost]
         public IActionResult formoutput()
         {
-            Person p = Factory.Get("STUDENT");
+            Student p = (Student)Factory.Get("STUDENT");
             p.firstName = HttpContext.Request.Form["first_name"];
             p.lastName = HttpContext.Request.Form["last_name"];
             p.phone = Convert.ToInt32(HttpContext.Request.Form["phone"]);
@@ -44,8 +46,14 @@ namespace DayCare.Controllers
             p.age = Convert.ToInt32(HttpContext.Request.Form["Age"]);
             p.date_of_birth = Convert.ToDateTime(HttpContext.Request.Form["DateOfBirth"]);
             DayCare.DAO.PersonDAO.save(p);
-            return Content(HttpContext.Request.Form["s_name"]);
+
+            p.teacher = Teacher.assignTeacher(p);
+            p.room = Teacher.assignRoom(p, p.teacher);
+                       
+            return View("~/Views/Home/formoutput.cshtml");
+
         }
+
         public IActionResult Login()
         {
             return View();
@@ -57,5 +65,6 @@ namespace DayCare.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
