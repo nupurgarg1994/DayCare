@@ -9,7 +9,7 @@ namespace DayCare.DAO
 {
     public class ReviewDAO
     {
-        public static void save(Review r)
+        public static void save(ReviewForm r)
         {
             string path = @".\reviews.csv";
             if (!File.Exists(path))
@@ -20,8 +20,8 @@ namespace DayCare.DAO
                     //adding titles
                     sw.Write("ReviewID,");
                     sw.Write("StudentID,");
-                    sw.Write("StudentName,");
-                    sw.Write("TeacherID,");
+                  // sw.Write("StudentName,");
+                   // sw.Write("TeacherID,");
                     sw.Write("TeacherName,");
                     sw.Write("DateOfReview,");
                     sw.WriteLine("Feedback");
@@ -29,8 +29,8 @@ namespace DayCare.DAO
                     //adding values
                     sw.Write(r.reviewID + ",");
                     sw.Write(r.studentID + ",");
-                    sw.Write(r.studentName + ",");
-                    sw.Write(r.teacherID + ",");
+                    //sw.Write(r.studentName + ",");
+                   // sw.Write(r.teacherID + ",");
                     sw.Write(r.teacherName + ",");
                     sw.Write(r.date_of_review + ",");
                     sw.WriteLine(r.feedback);
@@ -42,8 +42,8 @@ namespace DayCare.DAO
                 {
                     sw.Write(r.reviewID + ",");
                     sw.Write(r.studentID + ",");
-                    sw.Write(r.studentName + ",");
-                    sw.Write(r.teacherID + ",");
+                    //sw.Write(r.studentName + ",");
+                    //sw.Write(r.teacherID + ",");
                     sw.Write(r.teacherName + ",");
                     sw.Write(r.date_of_review + ",");
                     sw.WriteLine(r.feedback);
