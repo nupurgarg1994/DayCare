@@ -34,8 +34,20 @@ namespace DayCare.Controllers
         {
             return View();
         }
-        public IActionResult Review()
+        public IActionResult Reviewform()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Reviewform(string studentId)
+        {
+            ReviewForm r = new ReviewForm();
+            r.studentID = HttpContext.Request.Form["id"];
+            r.teacherName = HttpContext.Request.Form["teacher"];
+            r.feedback = HttpContext.Request.Form["feedback"];
+            ReviewDAO.save(r);
+
+
             return View();
         }
 

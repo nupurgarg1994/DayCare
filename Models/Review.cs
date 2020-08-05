@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DayCare.Models
 {
-    public class Review
+    public class ReviewForm
     {
         public string reviewID { get; set; }
         public string studentID {get; set;}
@@ -14,7 +14,8 @@ namespace DayCare.Models
         public string teacherName { get; set; }
         public DateTime date_of_review { get; set; }
         public string feedback { get; set; }
-        public Review()
+        
+        public ReviewForm()
         {
             date_of_review = DateTime.Now;
         }
