@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "formoutput";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="background-color:beige">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Details</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <th scope="row">First Name</th>
+                <td>@ViewBag.student.firstName</td>
+                <td>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">Last Name</th>
+                <td>@ViewBag.student.lastName</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Date Of Birth</th>
+                <td>@ViewBag.student.date_of_birth</td>
+            </tr>
+            <tr>
+                <th scope="row">Teacher</th>
+                <td>@ViewBag.student.teacher</td>
+            </tr>
+            <tr>
+                <th scope="row">Class</th>
+                <td>@ViewBag.student.room</td>
+            </tr>
+            <tr>
+                <th scope="row">Date of Joining</th>
+                <td>@ViewBag.student.date_of_joining</td>
+            </tr>
+            <tr>
+                <th scope="row">Required Vaccination</th>
+
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+</html>

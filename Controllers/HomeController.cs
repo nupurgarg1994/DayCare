@@ -51,8 +51,8 @@ namespace DayCare.Controllers
 
             p.teacher = Teacher.assignTeacher(p);
             p.room = Teacher.assignRoom(p, p.teacher);
-                       
-            return Output();
+            ViewBag.student = p;
+            return View();
 
         }
         public IActionResult Output()
