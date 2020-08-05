@@ -27,12 +27,19 @@ namespace DayCare.Models
 
         public static Room assignRoom(Person stu, Person t)
         {
-            Student student = (Student)stu;
-            Teacher teacher = (Teacher)t;
-            int studentAgeInMonths = ((DateTime.Now.Year - student.date_of_birth.Year) * 12) + DateTime.Now.Month - student.date_of_birth.Month;
-            Room r = Room.getRoom(studentAgeInMonths, t);
-            teacher.room = r;
-            return r;
+            try
+            {
+                Student student = (Student)stu;
+                Teacher teacher = (Teacher)t;
+                int studentAgeInMonths = ((DateTime.Now.Year - student.date_of_birth.Year) * 12) + DateTime.Now.Month - student.date_of_birth.Month;
+                Room r = Room.getRoom(studentAgeInMonths, t);
+                //teacher.room = r;
+                return r;
+            }
+            catch (NullReferenceException e) {
+                Console.WriteLine();
+            }
+            return null;
         }
 
         public override string ToString()

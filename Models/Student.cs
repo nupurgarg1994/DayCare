@@ -18,8 +18,8 @@ namespace DayCare.Models
         public Student() {
             id = x++;
             date_of_joining = DateTime.Today;
-            teacher = assignTeacher();
-            room = assignRoom(teacher);           
+            //teacher = assignTeacher();
+            //room = assignRoom(teacher);           
         }
 
         public Person assignTeacher()

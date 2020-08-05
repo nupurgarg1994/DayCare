@@ -18,9 +18,11 @@ namespace DayCare.Models
             Student_records();
         }
         //write the studentdata
+       
         public void Student_records()
         {
-            foreach(Student item in smi)
+            File.Delete(path);
+            foreach (Student item in smi)
             {
                 ImmunizationModel mn = checking(item.age);
                 try
@@ -29,6 +31,7 @@ namespace DayCare.Models
 
                     if (!(mn.Equals(null)))
                     {
+                       
 
                         if (!File.Exists(path))
                         {
@@ -42,7 +45,7 @@ namespace DayCare.Models
                                 sw.Write(item.email + ",");
                                 sw.Write(item.date_of_birth + ",");
 
-                                sw.WriteLine("Vaccination" + mn.vaccination);
+                                sw.WriteLine("Required vaccination:::: " + mn.vaccination);
 
                             }
                         }
@@ -56,14 +59,17 @@ namespace DayCare.Models
                                 sw.Write(item.age + ",");
                                 sw.Write(item.email + ",");
                                 sw.Write(item.date_of_birth + ",");
-                                sw.WriteLine(mn.vaccination);
+
+                                sw.WriteLine("Required vaccination:::: " + mn.vaccination);
 
 
                             }
                         }
 
+
+
                     }
-                    
+
 
                 }
                 catch (NullReferenceException e)
@@ -72,6 +78,7 @@ namespace DayCare.Models
                 }
              }
             ImmunizationReminder imr = new ImmunizationReminder();
+            AnnualReminder anr = new AnnualReminder();
         }
         //checking with the im record
         public ImmunizationModel checking(int S_age)
