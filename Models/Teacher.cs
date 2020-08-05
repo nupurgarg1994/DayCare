@@ -46,7 +46,7 @@ namespace DayCare.Models
 
         public override string ToString()
         {
-            return $"# {id}";
+            return $"# {firstName} {lastName}";
         }
 
         
