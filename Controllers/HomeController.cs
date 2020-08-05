@@ -13,7 +13,7 @@ namespace DayCare.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private Student p;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -34,24 +34,32 @@ namespace DayCare.Controllers
         {
             return View();
         }
+      
         [HttpPost]
         public IActionResult formoutput()
         {
-            Student p = (Student)Factory.Get("STUDENT");
+            p = (Student)Factory.Get("STUDENT");
             p.firstName = HttpContext.Request.Form["first_name"];
             p.lastName = HttpContext.Request.Form["last_name"];
-            p.phone = Convert.ToInt32(HttpContext.Request.Form["phone"]);
+            p.phone = Convert.ToInt64(HttpContext.Request.Form["phone"]);
             p.email = HttpContext.Request.Form["Email"];
             p.password = HttpContext.Request.Form["password"];
-            p.age = Convert.ToInt32(HttpContext.Request.Form["Age"]);
             p.date_of_birth = Convert.ToDateTime(HttpContext.Request.Form["DateOfBirth"]);
+            p.age = p.Age(p.date_of_birth);
+           
             DayCare.DAO.PersonDAO.save(p);
 
             p.teacher = Teacher.assignTeacher(p);
             p.room = Teacher.assignRoom(p, p.teacher);
                        
-            return View("~/Views/Home/formoutput.cshtml");
+            return Output();
 
+        }
+        public IActionResult Output()
+        {
+
+            ViewData["myperson"] = p;
+            return View();
         }
 
         public IActionResult Login()
