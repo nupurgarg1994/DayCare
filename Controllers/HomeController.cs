@@ -34,7 +34,11 @@ namespace DayCare.Controllers
         {
             return View();
         }
-      
+        public IActionResult Review()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult formoutput()
         {
