@@ -14,12 +14,13 @@ namespace DayCare.Models
         public Person teacher { get; set; }
         public Room room { get; set; }
         public DateTime date_of_joining { get; set; } 
-
+        public int age { get; set; }
         public Student() {
             id = x++;
             date_of_joining = DateTime.Today;
         }
 
+      
 
 
         public override string ToString()
